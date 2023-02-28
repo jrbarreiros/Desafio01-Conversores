@@ -25,15 +25,12 @@ public class Main {
 				ConvMoedas.moedas();
 			}
 			if (option == 1) { 
-				medidas();
+				ConvMedidas.medidas();
 			}
 			if (option == 2) { 
 				ConvTemp.temperaturas();
 			}
 			txt1 = "Deseja escolher uma nova conversão?";
 		}
-	}
-	private static void medidas() {
-		JOptionPane.showMessageDialog(null, "Medidas");
 	}
 }

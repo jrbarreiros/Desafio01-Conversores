@@ -17,18 +17,14 @@ public class ConvTemp {
 		   Kelvin
 		 */
 		
-		Double vlrDolarCp = 5.21;
-		Double vlrDolarVd = 5.211;
-		Double vlrEuroCp = 5.4929;
-		Double vlrEuroVd = 5.496;
-		Double vlrBTCCp = 121149.0;
-		Double vlrBTCVd = 121191.0;
-		
 		int continuaConv = 0;
 		while (continuaConv <1) {
 			continuaConv ++;
 			//JOptionPane.showMessageDialog(null, "Moedas");
 			String qtde = JOptionPane.showInputDialog(null, "Informe a temperatura", "Menu Temperaturas",JOptionPane.INFORMATION_MESSAGE );
+			
+			qtde = qtde.replace(".", "");
+			qtde = qtde.replace(",", ".");
 						
 			String[] tempConv = { "Celsius => Fahrenheit", "Fahrenheit => Celsius", "Celsius => Kelvin", "Kelvin => Celsius",
 					"Fahrenheit => Kelvin", "Kelvin => Fahrenheit"};
@@ -52,40 +48,39 @@ public class ConvTemp {
 					0, 3, null, options2, options2[0]);
 			if (option2 == 0) {
 				continuaConv = 0;
-			
 			}
 		}
-	    
 	    // Verificar se deseja fazer outra conversão
-		System.out.println("Final da conversão das temperaturas - Volta para Menu Principalo programa!");
-	   
-		
-	  
+		System.out.println("Final da conversão das temperaturas - Volta para Menu Principal do programa!");
 	// Final do programa
-	    
 	}
 
 	private static void converterTemperatura(String qtde, Object option) {
 		
 		Double convQtde = Double.parseDouble(qtde);
-		Double newTemp ;
-		
-		
+					
 		System.out.println("Conversão das temperaturas :\nQtde: "+ qtde+"\nTemperatura: "+option);
-		/*
-		 * "Fahrenheit => Celsius", "Celsius => Kelvin", "Kelvin => Celsius",
-					"Fahrenheit => Kelvin", "Kelvin => Fahrenheit
-		 */
-		
+
 		if(option == "Celsius => Fahrenheit") {
-			convQtde = 1.8 * convQtde + 32;			
+			convQtde = (1.8 * convQtde) + 32;			
 		}
 		if(option == "Fahrenheit => Celsius") {
 			convQtde = (convQtde - 32) / 1.8 ;			
 		}
-
-		
-				
+		if(option == "Celsius => Kelvin") {
+			convQtde = convQtde + 273.15;			
+		}
+		if(option == "Kelvin => Celsius") {
+			convQtde = (convQtde - 273.15);			
+		}
+		if(option == "Fahrenheit => Kelvin") {
+			convQtde = (convQtde - 32) / 1.8 ;				
+			convQtde = (convQtde + 273.15);		
+		}
+		if(option == "Kelvin => Fahrenheit") {
+			convQtde = (convQtde - 273.15);		
+			convQtde = (1.8 * convQtde) + 32;		
+		}		
 		//System.out.println("convQtde: " + convQtde);
 		//System.out.println("teste : "+ new DecimalFormat(".##").format(vlrConCp));
 		JOptionPane.showMessageDialog(null, "Conversão de "+ option + "\n Temperatura Convertida: "  + new DecimalFormat(".##").format(convQtde) );
